@@ -1,0 +1,25 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demolog4shell1
+  labels:
+    app: demolog4shell1
+spec:
+  selector:
+    matchLabels:
+      app:  demolog4shell1
+
+  template:
+    metadata:
+      labels:
+        app: demolog4shell1
+    spec:
+      containers:
+          - name: demolog4shell1
+            image: allinoneazimages1.azurecr.io/log4jvulnserver8:v1
+            imagePullPolicy: IfNotPresent
+            securityContext:
+              runAsNonRoot: true            
+      imagePullSecrets:
+        - name: secret1
